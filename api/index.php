@@ -6,21 +6,26 @@ require_once __DIR__ . '/contract/IBaseRepository.php';
 require_once __DIR__ . '/repositories/StudentRepository.php';
 require_once __DIR__ . '/services/GradeCalculation.php';
 require_once __DIR__ . '/controller/StudentManagementController.php';
+require_once __DIR__ . '/core/Router.php';
+require_once __DIR__ . '/../vendor/autoload.php';
+
+
 
 use Controller\StudentManagementController;
 use Repositories\StudentRepository;
+use Core\Router;
 
 $repository = new StudentRepository();
 
 header('Content-Type: application/json');
 
+Router::handleRequest();
+
 $controller = new StudentManagementController();
 
-// Check the request method
 $method = $_SERVER['REQUEST_METHOD'];
 $id = $_GET['id'] ?? null;
 
-// Handle routes
 switch ($method) {
     case 'GET':
         if ($id) {
