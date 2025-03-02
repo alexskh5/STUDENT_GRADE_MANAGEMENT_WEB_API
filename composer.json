@@ -1,0 +1,14 @@
+{
+    "name": "delap/student_management",
+    "description": "Student Grade Management API",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sam Alexies Dela Peña"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
