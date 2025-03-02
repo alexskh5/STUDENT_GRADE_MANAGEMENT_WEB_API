@@ -34,7 +34,11 @@ class StudentManagementController {
 
         $student = new Student(null, $name, $midterm, $final, $finalGrade, $status);
 
-        $result = $this->studentRepository->addStudent($student);
+        $result = $this->studentRepository->create([
+            'name'    => $student->name,
+            'midterm' => $student->midterm,
+            'final'   => $student->final
+        ]);        
 
         if ($result) {
             echo json_encode(["message" => "Student added successfully", "student" => $student]);
