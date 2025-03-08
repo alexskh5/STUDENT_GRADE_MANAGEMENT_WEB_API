@@ -19,6 +19,17 @@ class StudentManagementController {
         echo json_encode($this->studentRepository->getAll());
     }
 
+    public function getStudentById($id) {
+    $student = $this->studentRepository->findById($id);
+
+    if (!$student) {
+        echo json_encode(["error" => "Student not found"]);
+        return;
+    }
+
+    echo json_encode($student);
+}
+
     public function createStudent($data) {
         if (!isset($data['name'], $data['midterm'], $data['final'])) {
             echo json_encode(["error" => "Missing required fields"]);
