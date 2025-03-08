@@ -2,7 +2,7 @@
 
 namespace Core;
 
-use Controller\StudentManagementController;
+use controller\StudentManagementController;
 
 class Router {
     public static function handleRequest() {
@@ -20,10 +20,12 @@ class Router {
 
         switch ($method) {
             case 'GET':
-                if ($id) {
-                    $controller->getStudentById($id);  
-                } else {
-                    $controller->getAllStudents();     
+                if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+                    if (isset($_GET['id'])) {
+                        $controller->getStudentById($_GET['id']);
+                    } else {
+                        $controller->getAllStudents();
+                    }
                 }
                 break;
 
